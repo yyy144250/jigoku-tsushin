@@ -1,0 +1,90 @@
+.root {
+  background: #000;
+  color: #fff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  font-family: var(--font-mincho);
+  font-size: clamp(20px, 3.6vw, 34px);
+  letter-spacing: 0.55em;
+  margin-right: -0.55em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.input {
+  width: min(320px, 70vw);
+  height: 26px;
+  margin-top: clamp(32px, 6vh, 56px);
+  padding: 1px 4px;
+  border: none;
+  background: #fff;
+  color: #000;
+  font-family: "MS PGothic", "Hiragino Sans", sans-serif;
+  font-size: 15px;
+  outline: none;
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0%,
+  100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* 仿 Windows 经典按钮 */
+.send {
+  margin-top: clamp(32px, 6vh, 52px);
+  min-width: 92px;
+  padding: 2px 18px;
+  border: 1px solid #7a8aa8;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, #fff, #e6e9f0);
+  box-shadow: inset 0 0 0 1px #fff;
+  color: #000;
+  font-family: var(--font-mincho);
+  font-size: 15px;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  cursor: pointer;
+}
+
+.send:hover {
+  border-color: #3c7fb1;
+  background: linear-gradient(to bottom, #eaf6fd, #bee6fd);
+}
+
+.send:active {
+  background: linear-gradient(to bottom, #c4e5f6, #98d1ef);
+}
+
+.send:disabled {
+  cursor: default;
+}
+
+.error {
+  min-height: 1.5em;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #ff5a5a;
+  letter-spacing: 0.1em;
+}
+
+.disclaimer {
+  position: absolute;
+  bottom: 20px;
+  font-size: 12px;
+  color: #333;
+  letter-spacing: 0.1em;
+  text-align: center;
+}

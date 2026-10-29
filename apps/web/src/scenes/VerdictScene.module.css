@@ -1,0 +1,61 @@
+.root {
+  background: #000;
+}
+
+.lines {
+  max-width: 720px;
+  text-align: center;
+}
+
+.lines p {
+  font-size: 20px;
+  line-height: 2.2;
+  letter-spacing: 0.25em;
+}
+
+.lines .big {
+  margin-top: 36px;
+  font-size: clamp(30px, 6vw, 52px);
+  color: var(--red-bright);
+  text-shadow: 0 0 18px rgba(255, 0, 20, 0.7);
+}
+
+.lines .small {
+  margin-top: 32px;
+  font-size: 15px;
+  color: #8a7d76;
+  letter-spacing: 0.2em;
+}
+
+.seal {
+  width: 72px;
+  height: 72px;
+  margin-top: 28px;
+  opacity: 0;
+  transition: opacity 2.4s;
+}
+
+.back {
+  margin-top: 40px;
+  padding: 10px 36px;
+  border: 1px solid var(--red);
+  background: transparent;
+  color: var(--red-bright);
+  font-family: inherit;
+  font-size: 16px;
+  letter-spacing: 0.6em;
+  text-indent: 0.6em;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 1s, background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.back:hover:enabled {
+  background: var(--red);
+  color: #000;
+  box-shadow: 0 0 24px rgba(255, 0, 20, 0.5);
+}
+
+.visible {
+  opacity: 1;
+}

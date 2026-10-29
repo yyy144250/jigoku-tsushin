@@ -1,0 +1,12 @@
+.root {
+  background: #101010;
+  cursor: pointer;
+  animation-duration: 0.8s;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}

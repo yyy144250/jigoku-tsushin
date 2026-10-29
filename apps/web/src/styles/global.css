@@ -1,0 +1,99 @@
+:root {
+  --red: #b3000c;
+  --red-bright: #ff1a2b;
+  --text: #c9c2b8;
+  --font-serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --font-mincho: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", "Songti SC", serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: #000;
+  color: var(--text);
+  font-family: var(--font-serif);
+  overflow: hidden;
+}
+
+/* 每一幕都是铺满全屏的一层，挂载时淡入 */
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  animation: scene-in 1.2s ease both;
+}
+
+@keyframes scene-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.glitch {
+  animation: glitch 0.12s steps(2) infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0, 0); filter: none; }
+  25% { transform: translate(-4px, 2px); filter: hue-rotate(-20deg) contrast(1.4); }
+  50% { transform: translate(3px, -3px); filter: saturate(3); }
+  75% { transform: translate(-2px, -1px); filter: invert(0.1); }
+  100% { transform: translate(0, 0); filter: none; }
+}
+
+.embers {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 1.2s;
+}
+
+.overlay--scanlines {
+  background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px);
+}
+
+.overlay--vignette {
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+.app--plain .overlay--scanlines,
+.app--plain .overlay--vignette {
+  opacity: 0;
+}
+
+.overlay--flash {
+  z-index: 6;
+  background: var(--red-bright);
+  animation: flash 1.4s ease-out forwards;
+}
+
+@keyframes flash {
+  0% { opacity: 0; }
+  8% { opacity: 0.9; }
+  20% { opacity: 0.2; }
+  28% { opacity: 0.7; }
+  100% { opacity: 0; }
+}

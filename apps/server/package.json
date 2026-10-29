@@ -1,0 +1,26 @@
+{
+  "name": "@jigoku/server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "NODE_ENV=production tsx src/index.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "db:generate": "drizzle-kit generate"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "@hono/zod-validator": "^0.9.1",
+    "@jigoku/shared": "workspace:^",
+    "@libsql/client": "^0.18.0",
+    "drizzle-orm": "^0.45.4",
+    "hono": "^4.13.14",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "drizzle-kit": "^0.31.11",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,14 @@
+.root {
+  background: #000;
+}
+
+.lines p {
+  margin: 12px 0;
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+
+.lines .accent {
+  color: var(--red-bright);
+}
