@@ -1,0 +1,26 @@
+[Unit]
+Description=Jigoku Tsushin (地獄通信)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=jigoku
+Group=jigoku
+WorkingDirectory=/opt/jigoku-tsushin/apps/server
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=8787
+Environment=DATABASE_PATH=/var/lib/jigoku-tsushin/jigoku.db
+ExecStart=/opt/jigoku-tsushin/apps/server/node_modules/.bin/tsx src/index.ts
+Restart=on-failure
+RestartSec=5
+
+StateDirectory=jigoku-tsushin
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

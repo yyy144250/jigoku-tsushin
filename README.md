@@ -62,7 +62,20 @@ pnpm start   # 启动后端，同时托管前端页面，访问 http://localhost
 | 变量 | 默认值 | 说明 |
 | --- | --- | --- |
 | `PORT` | `8787` | 后端端口 |
+| `HOST` | `0.0.0.0` | 后端监听地址，放在 nginx 后面时建议设为 `127.0.0.1` |
 | `DATABASE_PATH` | `apps/server/data/jigoku.db` | SQLite 数据库文件路径 |
+
+### 部署到服务器
+
+`deploy/` 下是在 Ubuntu + nginx 上的部署配置：
+
+| 文件 | 用途 |
+| --- | --- |
+| `jigoku-tsushin.service` | systemd 服务，以 `jigoku` 用户运行，只监听 `127.0.0.1:8787`，数据库在 `/var/lib/jigoku-tsushin` |
+| `nginx.conf` | nginx 站点，转发到后端，送信接口按 IP 限流，并禁止外网读取名册列表 |
+| `deploy.sh` | 拉取 `main` 最新代码、构建并重启服务 |
+
+代码放在 `/opt/jigoku-tsushin`，之后更新只需在服务器上执行 `bash /opt/jigoku-tsushin/deploy/deploy.sh`。
 
 ### 其他命令
 

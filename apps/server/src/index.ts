@@ -6,6 +6,7 @@ import { migrateDatabase } from './db/client';
 import { grudgeRoutes } from './routes/grudges';
 
 const port = Number(process.env.PORT ?? 8787);
+const hostname = process.env.HOST ?? '0.0.0.0';
 const isProduction = process.env.NODE_ENV === 'production';
 
 await migrateDatabase();
@@ -19,6 +20,6 @@ if (isProduction) {
   app.use('/*', serveStatic({ root: '../web/dist' }));
 }
 
-serve({ fetch: app.fetch, port }, (info) => {
-  console.log(`地獄通信 server: http://localhost:${info.port}`);
+serve({ fetch: app.fetch, port, hostname }, (info) => {
+  console.log(`地獄通信 server: http://${info.address}:${info.port}`);
 });
